@@ -1,12 +1,10 @@
 package project;
 
 public class Product {
-	private int id;
 	private String name;
 	private int cuantity;
 		
-	public Product(int id, String name, int cuantity) {
-		this.id = id;
+	public Product(String name, int cuantity) {
 		this.name = name;
 		this.cuantity = cuantity;
 	}
@@ -22,10 +20,9 @@ public class Product {
 	public void setCuantity(int cuantity) {
 		this.cuantity = cuantity;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
+	@Override
+	public String toString() {
+		String r = "" + this.name + " : " + this.cuantity + " unidades";
+		return r;
 	}
 }
