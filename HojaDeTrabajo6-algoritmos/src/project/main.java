@@ -12,23 +12,40 @@ public class main {
 		
 	
 		  
-		System.out.println("Seleciones el tipo de Hash a utilizar: \n 1. HashMap \n 2. TreeMap \n 3.Linked HashMap");
+		System.out.println("Seleciones el tipo de Hash a utilizar: \n 1. HashMap \n 2. TreeMap \n 3. Linked HashMap");
 		String estructura= teclado.nextLine();   
 		Warehouse myWarehouse = new Warehouse("hash");  
 		Warehouse myCart = new Warehouse("hash"); 
 		
-		File file = new File("C:\\Users\\pablo\\Desktop\\Estructura de datos\\Git\\Tarea 6\\Continuando\\OWarehouse\\HojaDeTrabajo6-algoritmos\\src\\project\\ListadoProducto.txt");
-		Scanner sc = new Scanner(file);
-	 
-		while (sc.hasNextLine()){
+		String menu = " 1. Mueble de terraza \n 2. Sillones de masaje \n 3. Bebidas \n 4. Condimentos \n 5. Frutas \n 6. Carnes \n 7. Lácteos \n";
+		String menu1 ="  1. Mesas de jardín\n  2. Sillas de jardín\n  3. Conjuntos mesas y sillas de jardín \n  4. Mesas de Ping Pong exteriores";
+		String menu2 ="";
+		String menu3 ="";
+		String menu4 ="";
+		String menu5 ="";
+		String menu6 ="";
+		String menu7 ="";
+		try {
+			File file = new File("ListadoProducto.txt");
+			Scanner sc = new Scanner(file);
+		 
+			while (sc.hasNextLine()){
 
-		  String texto=sc.nextLine().toString();
-		  String[] valor=texto.split("\\|");
-		  valor[0] = valor[0].trim(); 
-		  valor[1] = valor[1].trim(); 
-		  String[] producto =  {valor[0], valor[1], "0" };    
-		  myWarehouse.addProduct(producto);
+			  String texto=sc.nextLine().toString();
+			  String[] valor=texto.split("\\|");
+			  valor[0] = valor[0].trim(); 
+			  valor[1] = valor[1].trim(); 
+			  String[] producto =  {valor[0], valor[1], "0" };    
+			  myWarehouse.addProduct(producto);
+			}
+			
+			sc.close();
+		}  catch (FileNotFoundException  e) {
+			System.out.println("An error occurred.");
+		      e.printStackTrace();
 		}
+		
+		
 
 		int pochochu = 0 ; 
 
@@ -40,6 +57,7 @@ public class main {
 			System.out.println("3. ¿Mostrar los datos del producto, categoría y la cantidad de cada artículo que tienes en tu colección :3");
 			System.out.println("4. ¿Mostrar el producto y la categoría de todo el inventario.");
 			System.out.println("5. ¿Mostrar el producto y la categoría existentes, ordenadas por tipo.");
+			System.out.println("6. Salir");
 			System.out.println("¿Tons que piensas hacer?");
 			int decision= teclado.nextInt();  
 
@@ -48,7 +66,7 @@ public class main {
 				while(j == 0){
 
 				System.out.println("Bueno, aquí está la lista de todos los productos disponibles");
-				System.out.println("!Fuuuuuuuuuuuaaaaaaaaaaaa¡ aparece una lista imaginaria :D");
+				System.out.println(menu);
 				System.out.println("Que producto quieres agregar?");
 				String producto= teclado.nextLine();
 				
@@ -59,8 +77,6 @@ public class main {
 				 if(decision == 0){
 					continue;
 				 }  
-
-
 				 else {
 					j = 1;
 				 }  
@@ -93,7 +109,9 @@ public class main {
 			else if (decision == 5){
 				System.out.println("Pi pi po po ca ca... ¡nuestros servidores están calculando todos los productos que tenemos en nuestro inventario(de manera ordenada ;)!");
 			}
-
+			else{
+				pochochu = 1;
+			}
 
 		}
 
