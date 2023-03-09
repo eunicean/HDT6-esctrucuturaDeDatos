@@ -29,7 +29,6 @@ public class Warehouse {
 	}
 	public String getCategoryOfProduct(String productName) {//2
 		String r = "";
-		
 		ArrayList<String> myKeys = new ArrayList<String>(myMap.keySet());
 		for(int i=0; i<myKeys.size();i++) {
 			Product temp = new Product(productName,0);
@@ -74,26 +73,41 @@ public class Warehouse {
 			if(myMap.get(myKeys.get(i)).get(0).getCuantity() == 0) { //inventory
 				ArrayList<Product> ProductsLsit = new ArrayList<Product>(myMap.get(myKeys.get(i)));
 				for(int j=0; j<ProductsLsit.size();j++) {
-					r += ProductsLsit.get(j).toStringInventory() + "\n";
+					r +=" - " + ProductsLsit.get(j).toStringInventory() + "\n";
 				}
 			}
 			else { //cart
 				ArrayList<Product> ProductsLsit = new ArrayList<Product>(myMap.get(myKeys.get(i)));
 				for(int j=0; j<ProductsLsit.size();j++) {
-					r += ProductsLsit.get(j).toStringCart() + "\n";
+					r +=" - " + ProductsLsit.get(j).toStringCart() + "\n";
 				}
 			}
 		}
+		
+		return r;
+	}
+	public String getDataProductSorted(String[] productsName) {//4
+		String r = "";
 		return r;
 	}
 	public String getAllData() {
 		String r = "";
-		
-		return r;
-	}
-	public String getAllDataSorted() {
-		String r = "";
-		
+		ArrayList<String> myKeys = new ArrayList<String>(myMap.keySet());
+		for(int i=0; i<myKeys.size();i++) {
+			r += myKeys.get(i) + " \n";
+			if(myMap.get(myKeys.get(i)).get(0).getCuantity() == 0) { //inventory
+				ArrayList<Product> ProductsLsit = new ArrayList<Product>(myMap.get(myKeys.get(i)));
+				for(int j=0; j<ProductsLsit.size();j++) {
+					r +=" - " + ProductsLsit.get(j).getName() + "\n";
+				}
+			}
+			else { //cart
+				ArrayList<Product> ProductsLsit = new ArrayList<Product>(myMap.get(myKeys.get(i)));
+				for(int j=0; j<ProductsLsit.size();j++) {
+					r +=" - " + ProductsLsit.get(j).getName() + "\n";
+				}
+			}
+		}
 		return r;
 	}
 }
