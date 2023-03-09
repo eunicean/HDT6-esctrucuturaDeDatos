@@ -11,7 +11,13 @@ public class Product {
 	public Product(String name, int cuantity) {
 		this.name = name;
 		this.cuantity = cuantity;
-		this.InWarehouse = rn.nextInt(150-15)+15;
+		this.InWarehouse = 150;
+	}
+	
+	public Product(String name) {
+		this.name = name;
+		this.cuantity = 0;
+		this.InWarehouse = 150;
 	}
 	public String getName() {
 		return name;
@@ -25,9 +31,19 @@ public class Product {
 	public void setCuantity(int cuantity) {
 		this.cuantity = cuantity;
 	}
+	public String toStringInventory() {
+		String r = "" + this.name + " : " + this.InWarehouse + " unidades en almacen";
+		return r;
+	}
+	
+	public String toStringCart() {
+		String r = "" + this.name + " : " + this.cuantity + " unidades en carrito";
+		return r;
+	}
 	@Override
 	public String toString() {
 		String r = "" + this.name + " : " + this.cuantity + " unidades";
+
 		return r;
 	}
 }
